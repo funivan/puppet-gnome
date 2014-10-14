@@ -1,0 +1,4 @@
+[${schema}]
+<% @values.each do |key, value| -%>
+  <%= key %> = <%= (value.class == String) ? ('"' + value + "'") : value %>\n
+<% end -%>"
