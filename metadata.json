@@ -1,0 +1,33 @@
+{
+  "name": "gnome",
+  "version": "0.0.1",
+  "author": "Funivan",
+  "summary": "",
+  "license": "Apache-2.0",
+  "source": "https://github.com/funivan/funivan-gnome",
+  "project_page": "https://github.com/funivan/funivan-gnome",
+  "issues_url": "https://github.com/funivan/funivan-gnome/issues",
+  "dependencies": [],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04",
+        "14.04"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": "3.x"
+    }
+  ]
+}

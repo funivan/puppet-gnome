@@ -1,5 +1,6 @@
 # Gnome module for Puppet
 
+
 ## Description
 Configure settings via gsettings provider. 
 
@@ -11,7 +12,13 @@ Force a package to be installed from a specific release.  Useful when using repo
 gnome::gsettings {'org.gnome.settings-daemon.plugins.media-keys':
  values => {
    screenshot => "<Super>Print",
-   area-screenshot "['disabled']",
+   area-screenshot => "['disabled']",
  },
 }
+```
+
+
+## Install development version
+```
+puppet module install funivan-gnome-0.1.0.tar.gz --ignore-dependencies
 ```
