@@ -14,3 +14,5 @@
  	cd $dir;
  	mv ../$file $file;
   ls /etc/puppet/modules/
+
+	puppet module install $file --ignore-dependencies   --force

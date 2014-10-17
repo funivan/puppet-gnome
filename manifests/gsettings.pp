@@ -1,4 +1,4 @@
-#
+# gsettings.pp
 # Variables:
 # $userName
 #
@@ -6,7 +6,8 @@
 #
 
 # configure default gnome settings
-	define gsettings::command($command=$title, $output=false){
+
+	define gnome::gsettings::command($command=$title, $output=false){
 		exec { $command:
 			command => "
 				PID=$(pgrep gnome-session);
@@ -21,23 +22,11 @@
 		}
 	}
             
-	define gsettings::set($command=$title, $output=false){
+	define gnome::gsettings::set($command=$title, $output=false){
 		gsettings::command{"gsettings set $command":}
 	}
 
-	define gsettings::resetKeys($schema=$title){
-			gsettings::command { "
-				for id in \$(gsettings list-keys $schema); do
-					info=`gsettings get $schema \$id | egrep \"(Alt|Ctrl|Shift|Super|Primary)\"`;
-					if [ ! -z \"\$info\" ] ; then
-						gsettings set $schema \$id \"['disabled']\"
-						echo 'disable '\$id
-					fi;
-				done
-			":
-		}
-	}
-            
+     
 
 
 

@@ -1,3 +1,4 @@
+# autoStartEntry.pp
 
 define gnome::autoStartEntry($entryName = $title, $exec) {
 

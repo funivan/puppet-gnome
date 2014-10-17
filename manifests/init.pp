@@ -1,2 +1,6 @@
-class gnome {
+define gnome(
+  $path = $name,
+) {
+  include gnome::autoStartEntry
+
 }
