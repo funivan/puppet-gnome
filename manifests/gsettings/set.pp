@@ -1,5 +1,5 @@
 define gnome::gsettings::set(
-	$command=$title, $output=false
+  $command=$title
 ){
-		gnome::gsettings::command{"gsettings set $command":}
+  gnome::gsettings::command{ "gsettings set $command": }
 }
