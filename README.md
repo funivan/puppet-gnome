@@ -32,6 +32,12 @@ Configure settings via gsettings provider.
  }
 ``` 
  
+### Set
+Set custom terminal
+ 
+```
+gnome::gsettings::set{ "org.gnome.desktop.default-applications.terminal exec 'terminator'": }
+```
  
 
 ## Install over librarian
