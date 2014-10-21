@@ -6,24 +6,37 @@ Configure settings via gsettings provider.
 
 ## Usage
 
-
-
-## Install development version
+### Schema
 ```
-./build.sh && puppet module install funivan-gnome-0.1.0.tar.gz --ignore-dependencies
+ gnome::gsettings::schema{ "org.gnome.desktop.wm.keybindings":
+    reset_keys => true, 
+    values    => {
+      'switch-to-workspace-left'=>'["<Super>Left"]',
+      'switch-to-workspace-right'=>'["<Super>Right"]',
+      'switch-windows'=>'["<Alt>Tab"]',
+      'switch-input-source'=>'["Caps_Lock"]',
+      'close'=>'["<Alt>F4"]',
+      'show-desktop'=>'["<Super>d"]'
+    }
+  }
 ```
 
-
-
-
-
-### @todo gnome::gsettings
-Try to use new syntax 
+`reset_keys` = reset keys with Alt|Ctrl|Shift|Super|Primary. By default reset_keys = false
+     
 ```
-gnome::gsettings {'org.gnome.settings-daemon.plugins.media-keys':
- values => {
-   screenshot => "<Super>Print",
-   area-screenshot => "['disabled']",
- },
-}
+ gnome::gsettings::schema{ "org.gnome.settings-daemon.peripherals.keyboard":
+   values    => {
+    'delay'=>180,
+    'repeat-interval'=> 23
+   }
+ }
+``` 
+ 
+ 
+
+## Install over librarian
+Add to `Puppetfile`
+```
+mod 'funivan/gnome',
+  :git => 'git://github.com/funivan/puppet-gnome.git'
 ```
