@@ -1,19 +1,28 @@
 define gnome::autostart_entry(
   $entryName = $title,
-  $exec
+  $exec = ''
 ) {
 
 
   $user = $::gnome::params::user
   $homeDir = "/home/$user"
 
-  exec { "mysql_autostart dir for $entryName ":
-    command => "mkdir -p $homeDir/.config/autostart",
-    user => $user,
+  if empty($exec) {
+    $execute = $entryName
+  } else {
+    $execute = $exec
+  }
+
+  $autostartDir = "$homeDir/.config/autostart"
+
+  exec { "create autostart dir for $entryName ":
+    command => "mkdir -p $autostartDir",
+    user    => $user,
+    onlyif  => ["test ! -d $autostartDir"]
   }
   ->
   gnome::desktop_entry { "$homeDir/.config/autostart/$entryName.desktop" :
-    exec => $exec,
+    exec => $execute,
     name => $entryName,
   }
 

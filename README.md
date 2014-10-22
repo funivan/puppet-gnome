@@ -38,7 +38,36 @@ Set custom terminal
 ```
 gnome::gsettings::set{ "org.gnome.desktop.default-applications.terminal exec 'terminator'": }
 ```
- 
+
+### Autostart applications
+
+Start custom script
+```
+gnome::autostart_entry{ 'myScript':
+  exec => '/bin/test-script.sh'
+}
+```
+
+
+Start program
+```
+gnome::autostart_entry{ 'pidgin':
+  exec => '/usr/bin/pidgin'
+}
+```
+
+Or event simpler  
+```
+gnome::autostart_entry{ 'pidgin': }
+```
+
+ gnome::desktop_entry { "$homeDir/.config/autostart/$entryName.desktop" :
+    exec => $exec,
+    name => $entryName,
+  }
+
+
+
 
 ## Install over librarian
 Add to `Puppetfile`
