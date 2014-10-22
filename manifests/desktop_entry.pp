@@ -1,6 +1,6 @@
 define gnome::desktop_entry(
   $file=$title,
-  $name,
+  $entryName,
   $exec="",
   $genericName="",
   $comment="",

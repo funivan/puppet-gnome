@@ -23,7 +23,7 @@ define gnome::autostart_entry(
   ->
   gnome::desktop_entry { "$homeDir/.config/autostart/$entryName.desktop" :
     exec => $execute,
-    name => $entryName,
+    entryName => $entryName,
   }
 
 }

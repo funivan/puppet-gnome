@@ -3,7 +3,7 @@ define gnome::gsettings::schema(
   $values,
   $reset_keys = false,
 ) {
-  # @todo set values from ararys
+
   $command = inline_template("<% @values.each do |key, value| %>
   gsettings set $schema <%= key %> <%= (value.class == String) ? (\"'\" + value + \"'\") : value %>;<% end %>")
 

@@ -15,10 +15,10 @@ define gnome::desktop_program(
   file { ["$homeDir/.local/", "$homeDir/.local/share", "$homeDir/.local/share/applications"] :
     ensure => directory,
     owner  => $::gnome::params::user,
-  } -> gnome::desktopEntry { "$homeDir/.local/share/applications/$program.desktop" :
-    exec   => "$program",
-    name   => "$program",
-    icon   => "$icon",
+  } -> gnome::desktop_entry { "$homeDir/.local/share/applications/$program.desktop" :
+    exec        => "$program",
+    entryName   => "$program",
+    icon        => "$icon",
   }
 
 }
