@@ -1,7 +1,6 @@
 define gnome::desktop_program(
-  $command = $title,
-  $entryName = "",
-  $fileName = "",
+  $entryName = $title,
+  $exec = "",
   $icon
 ){
 
@@ -12,27 +11,21 @@ define gnome::desktop_program(
 
 
   
-  if empty($entryName) {
-    $applicationName = $command
+  if empty($exec) {
+    $command = $entryName
   } else {
-    $applicationName = $entryName
+    $command = $exec
   }
   
-  if empty($fileName) {
-    $desktopFileName = $applicationName
-  } else {
-    $desktopFileName = $fileName
-  }
-
   exec { "create dir for $command " :
     command => "mkdir -p $applicationDir",
     user    => $user,
     onlyif  => ["test -d $applicationDir"],
   }
 
-  -> gnome::desktop_entry { "$applicationDir/$desktopFileName.desktop" :
+  -> gnome::desktop_entry { "$applicationDir/$entryName.desktop" :
     exec        => $command,
-    entryName   => $applicationName,
+    entryName   => $entryName,
     icon        => $icon,
   }
 
