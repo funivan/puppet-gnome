@@ -13,7 +13,8 @@ define gnome::desktop_entry(
 
   file { $file:
     content => template("gnome/desktop.erb"),
-    owner  => $::gnome::params::user,
-    mode   => 0755
+    owner   => $::gnome::params::user,
+    group   => $::gnome::params::user,
+    mode    => 0755
   }
 }
